@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const baseUrl = 'https://flask-nosql-backend.onrender.com/api/add_users';
+const baseUrl = 'https://flask-nosql-backend.onrender.com/api/users';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
@@ -117,7 +117,7 @@ const UserManagement = () => {
         <ul>
           {users.map((user) => (
             <li key={user.id}>
-              {user.name} ({user.email})
+              ID: {user.id} - {user.name} ({user.email})
             </li>
           ))}
         </ul>
