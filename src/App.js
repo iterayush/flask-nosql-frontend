@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:5000/api/users';
+const baseUrl = 'https://flask-nosql-backend.onrender.com/api/users';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
