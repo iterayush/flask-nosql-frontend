@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const baseUrl = 'https://flask-nosql-backend.onrender.com/api/add_users';
+const baseUrl = 'https://flask-nosql-backend.onrender.com/api/users';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
@@ -24,22 +24,14 @@ const UserManagement = () => {
   };
 
   const handleAddUser = async () => {
-  try {
-    const response = await axios.post(baseUrl, newUser);
-    const addedUser = response.data;  // Get the newly added user (with ID)
-
-    setNewUser({ name: '', email: '' });
-    
-    // Optionally, you can directly add the new user to the existing users state
-    setUsers([...users, addedUser]);
-
-    // Fetch users again to ensure the latest list is shown (optional, if not appending directly)
-    // fetchUsers();
-  } catch (error) {
-    console.error('Error adding user:', error);
-  }
-};
-
+    try {
+      await axios.post(baseUrl, newUser);
+      setNewUser({ name: '', email: '' });
+      fetchUsers(); // Refresh the user list after adding a new user
+    } catch (error) {
+      console.error('Error adding user:', error);
+    }
+  };
 
   const handleUpdateUser = async () => {
     try {
